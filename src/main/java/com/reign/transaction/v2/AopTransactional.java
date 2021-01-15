@@ -8,7 +8,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 /**
  * @ClassName AopTransactional
@@ -43,11 +42,10 @@ public class AopTransactional {
     }
 
     /**
-     *
-     * TODOspring事务失效与这个有关
+     * TODO spring事务失效与这个有关
      */
     @AfterThrowing("execution(* com.reign.demo.service.UserService.addV2(..))")
-    public void afterThrowing(){
+    public void afterThrowing() {
         TransactionStatus transactionStatus = local.get();
         transactionUtil.rollback(transactionStatus);
         //获取当前事务并直接回滚 FIXME 这里直接报错了，没有获取到当前事务

@@ -1,9 +1,9 @@
-package com.reign.transaction.v2;
+package com.reign.transaction.v3;
 
 import java.lang.annotation.*;
 
 /**
- * @ClassName Transactional
+ * @ClassName ReignTransactional
  * @Description 采用AOP封装事务管理
  * @Author wuwenxiang
  * @Date 2021-01-14 22:36
@@ -12,5 +12,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE,ElementType.METHOD})
 @Documented
-public @interface Transactional {
+public @interface ReignTransactional {
 }

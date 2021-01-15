@@ -4,6 +4,7 @@ import com.reign.demo.dao.UserDao;
 import com.reign.demo.domain.User;
 import com.reign.demo.service.UserService;
 import com.reign.transaction.v1.TransactionUtil;
+import com.reign.transaction.v3.ReignTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
@@ -27,6 +28,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 版本1：使用编程式手动提交
+     *
      * @param user
      */
     @Override
@@ -58,16 +60,24 @@ public class UserServiceImpl implements UserService {
     /**
      * 版本2：使用aop
      */
-    public void addV2(User user){
-        try{
-            userDao.add(user);
-            int i= 1/0;
-            User user1 = new User(32, "第二天");
-            userDao.add(user1);
+    public void addV2(User user) {
+        userDao.add(user);
+        int i = 1 / 0;
+        User user1 = new User(32, "第二天");
+        userDao.add(user1);
+    }
 
-        }catch (Exception e){
-            //TODO 如果在方法内部直接catch住异常，异常没有办法抛出，就会导致无法触发afterThrowing通知，导致事务回滚失败；
-        }
 
+    /**
+     * 版本3：使用自定义的事务注解
+     * @param user
+     */
+    @ReignTransactional
+    @Override
+    public void addV3(User user) {
+        userDao.add(user);
+        int i = 1 / 0;
+        User user1 = new User(100, "annotation");
+        userDao.add(user1);
     }
 }

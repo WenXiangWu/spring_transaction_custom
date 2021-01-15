@@ -48,20 +48,5 @@ public class AopLog {
         //FIXME  使用事务的时候事务方法一定要抛异常，不能够去try catch
         //调用方法之后执行
         System.out.println("环绕通知   调用方法之后执行");
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

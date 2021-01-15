@@ -19,7 +19,8 @@
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass"  value="com.mysql.jdbc.Driver"></property>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/spring_transaction"></property>
+        <!--<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/spring_transaction"></property>-->
+        <property name="jdbcUrl" value="jdbc:mysql://192.168.171.132:3306/spring_transaction"></property>
         <property name="user" value="root"></property>
         <property name="password" value="123456"></property>
     </bean>

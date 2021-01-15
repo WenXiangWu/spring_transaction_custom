@@ -14,4 +14,5 @@ public interface UserService {
 
     void addV2(User user);
 
+    void addV3(User user);
 }

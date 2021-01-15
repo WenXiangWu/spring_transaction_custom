@@ -18,6 +18,8 @@ public class Test1 {
         UserService userService = context.getBean(UserService.class);
         User user = new User(2,"老王",33);
         //userService.add(user);
-        userService.addV2(user);
+        //userService.addV2(user);
+        userService.addV3(user);
+
     }
 }
